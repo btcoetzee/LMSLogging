@@ -6,6 +6,6 @@ namespace Logging.Implementation.Constants
 {
     public class LoggerCofiguration
     {
-        public enum LogRecipient { File }
+        public enum LogProvider { File }
     }
 }

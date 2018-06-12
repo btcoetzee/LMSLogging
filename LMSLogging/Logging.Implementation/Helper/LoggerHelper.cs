@@ -9,22 +9,25 @@ namespace Logging.Implementation
     {
         private static ILogger logger;
 
-        public static void Log(LoggerCofiguration.LogRecipient recipient,ILoggerObject loggerObject)
+        public static void Log(LoggerCofiguration.LogProvider provider,ILoggerObject loggerObject)
         {
-            switch (recipient)
+            switch (provider)
             {
-                case LoggerCofiguration.LogRecipient.File:
+                case LoggerCofiguration.LogProvider.File:
                     logger = new FileLogger();
                     logger.Log(loggerObject);
                     break;
             }
+
+            //var logger = IoC.Unity.Resolve<ILogger>("provider");
+            // logger.Log(...);
         }
 
-        public static void LogError(LoggerCofiguration.LogRecipient recipient, ILoggerErrorObject loggerErrorObject)
+        public static void LogError(LoggerCofiguration.LogProvider provider, ILoggerErrorObject loggerErrorObject)
         {
-            switch (recipient)
+            switch (provider)
             {
-                case LoggerCofiguration.LogRecipient.File:
+                case LoggerCofiguration.LogProvider.File:
                     logger = new FileLogger();
                     logger.Log(loggerErrorObject);
                     break;
